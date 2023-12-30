@@ -2,25 +2,6 @@
 
 This repository contains various programs developed as part of the Compiler Design Lab course. Each program focuses on different aspects of compiler design, including lexical analysis, parsing, and syntax tree generation.
 
-## Table of Contents
-
-- [Programs](#programs)
-  - [BasicJavaProgram.java](#basicjavaprogramjava)
-  - [CapitalLetters.lex](#capitalletterslex)
-  - [ComputationOfFirst.c](#computationoffirstc)
-  - [First&Follow.c](#firstfollowc)
-  - [CG.java](#cgjava)
-  - [LeftFactoring.c](#leftfactoringc)
-  - [LeftRecursion.c](#leftrecursionc)
-  - [Operators&Identifiers.lex](#operatorsidentifierslex)
-  - [PredictiveParser.cpp](#predictiveparsercpp)
-  - [ScannerByRegularExpression](#scannerbyregularexpression)
-  - [SLRParser.cpp](#slrparsercpp)
-  - [SyntaxTreeArithmetic.java](#syntaxtreearithmeticjava)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## Programs
 
 ### BasicJavaProgram.java
