@@ -4,19 +4,16 @@ from firebase_admin import credentials, firestore  # type: ignore
 
 app = Flask(__name__)
 
-# Initialize Firestore with the service account credentials
 cred = credentials.Certificate("serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 
-# Route to render the customer management page
 @app.route("/customers")
 def customers():
     return render_template("customers.html")
 
 
-# Route to handle adding/editing a customer
 @app.route("/add_edit_customer", methods=["POST"])
 def add_edit_customer():
     customer_data = request.form
@@ -35,7 +32,6 @@ def add_edit_customer():
     return jsonify({"success": True})
 
 
-# Route to fetch all customers from Firestore
 @app.route("/get_customers", methods=["GET"])
 def get_customers():
     customers_ref = db.collection("customers")
