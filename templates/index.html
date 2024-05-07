@@ -4,32 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRM System</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Mini CRM</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <header>
-        <h1>CRM System</h1>
-        <nav>
-            <ul>
-                <li><a href="/">Dashboard</a></li>
-                <li><a href="/customers">Customers</a></li>
-                <li><a href="/interactions">Interactions</a></li>
-                <li><a href="/products">Products</a></li>
-                <li><a href="/orders">Orders</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <div class="main-content">
-        <h2>Welcome to CRM System</h2>
-        <p>Select a section from the navigation menu.</p>
+    <h1>Mini CRM</h1>
+    <button onclick="showAddForm()">Add Contact</button>
+    <div id="addForm" style="display: none;">
+        <input type="text" id="name" placeholder="Name">
+        <input type="email" id="email" placeholder="Email">
+        <input type="tel" id="phone" placeholder="Phone">
+        <button onclick="addContact()">Add</button>
     </div>
-
-    <footer>
-        <p>&copy; 2024 CRM System</p>
-    </footer>
+    <div id="contacts"></div>
+    <script src="scripts.js"></script>
 </body>
 
 </html>
