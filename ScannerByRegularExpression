@@ -1,0 +1,91 @@
+------------
+test.y:
+
+%{
+#include <stdio.h>
+
+int yylex();
+int yyerror(char *s);
+
+%}
+
+%token STRING NUM OTHER SEMICOLON
+
+%type <name> STRING
+%type <number> NUM
+
+%union{
+	  char name[20];
+    int number;
+}
+
+%%
+
+prog:
+  stmts
+;
+
+stmts:
+		| stmt SEMICOLON stmts
+
+stmt:
+		STRING {
+				printf("Your entered a string - %s", $1);
+		}
+		| NUM {
+				printf("The number you entered is - %d", $1);
+		}
+		| OTHER
+;
+
+%%
+
+int yyerror(char *s)
+{
+	printf("Syntax Error on line %s\n", s);
+	return 0;
+}
+
+int main()
+{
+    yyparse();
+    return 0;
+}
+
+------------
+test.l:
+
+%{
+#include <stdio.h>
+#include <string.h>
+#include "test.tab.h"
+void showError();
+%}
+
+
+numbers     ([0-9])+
+alpha       ([a-zA-Z])+
+
+%%
+
+{alpha}			   {sscanf(yytext, "%s", yylval.name); return (STRING);}
+{numbers}      {yylval.number = atoi(yytext); return (NUM);}
+";"      		   {return (SEMICOLON);}
+.      		     {showError(); return(OTHER);}
+
+%%
+
+
+void showError(){
+    printf("Other input");
+}
+int yywrap(){
+    return 1;
+}
+------------
+TO RUN:
+
+win_flex test.l
+win_bison -d test.y
+gcc lex.yy.c test.tab.c
+a
